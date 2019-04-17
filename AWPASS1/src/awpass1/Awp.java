@@ -1,8 +1,15 @@
 
 package awpass1;
 
+import java.io.*; 
+import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Awp extends javax.swing.JFrame {
 
+    String server_text = "";
+    
     long  intsum1=0,intsum2=0,intnum1=0,intnum2=0,num;
     float floatsum1=0,floatsum2=0;
     int dot=0,op1=0,dot1=0,count=0,panel=0;
@@ -374,7 +381,7 @@ public class Awp extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Bmul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Bdiv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
             .addComponent(text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -416,7 +423,7 @@ public class Awp extends javax.swing.JFrame {
                     .addComponent(Bclr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B00, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Bmode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(4, Short.MAX_VALUE))
         );
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -637,7 +644,9 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_textActionPerformed
 
     private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3ActionPerformed
-         eqlclick=0;
+         
+        server_text = server_text + "3";
+        eqlclick=0;
              if(dot==0)
              {
                  intsum1=intsum1*10+3;
@@ -695,7 +704,10 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
- eqlclick=0;
+
+        server_text = server_text + "1";
+        
+        eqlclick=0;
              if(dot==0)
              {
                  intsum1=intsum1*10+1;
@@ -839,6 +851,8 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
+        
+        server_text = server_text + "2";
         eqlclick=0;
         if(dot==0)
              {
@@ -855,7 +869,9 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_B2ActionPerformed
 
     private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
-          eqlclick=0;
+         
+        server_text = server_text + "4";
+        eqlclick=0;
             if(dot==0)
              {
                  intsum1=intsum1*10+4;
@@ -871,6 +887,8 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_B4ActionPerformed
 
     private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ActionPerformed
+        
+        server_text = server_text + "5";
         eqlclick=0;
              if(dot==0)
              {
@@ -886,7 +904,9 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_B5ActionPerformed
 
     private void B6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B6ActionPerformed
-       eqlclick=0;
+       
+        server_text = server_text + "6";
+        eqlclick=0;
              if(dot==0)
              {
                  intsum1=intsum1*10+6;
@@ -901,6 +921,7 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_B6ActionPerformed
 
     private void B7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B7ActionPerformed
+        server_text = server_text + "7";
         eqlclick=0;
              if(dot==0)
              {
@@ -917,7 +938,8 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_B7ActionPerformed
 
     private void B8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B8ActionPerformed
-       eqlclick=0;
+       server_text = server_text + "8";
+        eqlclick=0;
             if(dot==0)
              {
                  intsum1=intsum1*10+8;
@@ -933,7 +955,8 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_B8ActionPerformed
 
     private void B9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B9ActionPerformed
-         eqlclick=0;
+        server_text = server_text + "9"; 
+        eqlclick=0;
              if(dot==0)
              {
                  intsum1=intsum1*10+9;
@@ -949,6 +972,7 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_B9ActionPerformed
 
     private void B0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B0ActionPerformed
+        server_text = server_text + "0";
         eqlclick=0; 
         if(dot==0)
              {
@@ -965,7 +989,8 @@ jPanel2.setVisible(false);
     }//GEN-LAST:event_B0ActionPerformed
 
     private void BdotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BdotActionPerformed
-               intnum1=intsum1;
+        server_text = server_text + ".";       
+        intnum1=intsum1;
                dot=1;
                dot1=1;
                text.setText(""+intnum1+".");
@@ -1049,6 +1074,7 @@ jPanel2.setVisible(false);
 //         dot=0;
 op1=1;
 opration("+");
+server_text = server_text + "+";
            // TODO add your handling code here:
     }//GEN-LAST:event_BsumActionPerformed
 
@@ -1095,6 +1121,7 @@ opration("+");
            // TODO add your handling code here:
            op1=2;
 opration("-");
+server_text = server_text + "-";
     }//GEN-LAST:event_BsubActionPerformed
 
     private void BmulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BmulActionPerformed
@@ -1136,6 +1163,7 @@ opration("-");
 //           dot=0;
            op1=3;
 opration("*");
+server_text = server_text + "*";
                    // TODO add your handling code here:
     }//GEN-LAST:event_BmulActionPerformed
 
@@ -1179,11 +1207,13 @@ opration("*");
 //           dot=0;
            op1=4;
 opration("/");
+server_text = server_text + "/";
                   // TODO add your handling code here:
     }//GEN-LAST:event_BdivActionPerformed
 
     private void BmodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BmodeActionPerformed
-           String str1=null;
+        server_text = server_text + "%";  
+        String str1=null;
            if(eqlclick1!=1)
         if(op1>0)
            {
@@ -1217,6 +1247,8 @@ opration("/");
 
     private void BeqlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeqlActionPerformed
     
+        server_text = server_text + "=";
+        
         if(eqlclick!=1){
             //eqlclick=1;
         switch(op1)
@@ -1275,11 +1307,13 @@ opration("/");
                     }  
                     else{
                             intnum1=(long)floatsum1;
-                             text.setText(""+intnum1);  
+                             text.setText(""+intnum1); 
                     }
                  }
                  else
+                 {
                     text.setText("invalid");
+                 }
                  
                   break;
             }
@@ -1296,7 +1330,7 @@ opration("/");
                         text.setText(""+intnum1);
                       }
                      else{ 
-                           text.setText("invalid");
+                           text.setText("invalid");                          
                         }
                 }
                  else{ 
@@ -1315,7 +1349,7 @@ opration("/");
      }// TODO add your handling code here:
         else
         {
-           text1.setText(""+intnum1);  
+           text1.setText(""+intnum1); 
         }
         eqlclick1=1;
     }//GEN-LAST:event_BeqlActionPerformed
@@ -1339,6 +1373,15 @@ opration("/");
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Awp().setVisible(true);
+                try {
+                    Socket s = new Socket("127.0.0.1", 5056);
+                    
+                    // obtaining input and out streams
+                    DataInputStream dis = new DataInputStream(s.getInputStream()); 
+                    DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+                } catch (IOException ex) {
+                    Logger.getLogger(Awp.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -1383,6 +1426,8 @@ opration("/");
     private javax.swing.JTextField text1;
     // End of variables declaration//GEN-END:variables
 public void result(){
+    
+    String final_server_result = "";
 eqlclick=1;
  if(op1>0){
         switch(op1)
@@ -1394,9 +1439,11 @@ eqlclick=1;
                 if(dot1!=1){
                     intnum1=(long)floatsum1;
                      text.setText(""+intnum1);
+                     final_server_result = Long.toString(intnum1);
                 }  
                 else{
                     text.setText(""+floatsum1);
+                    final_server_result = Float.toString(floatsum1);
                 }
              
                 break;
@@ -1408,10 +1455,12 @@ eqlclick=1;
                 if(dot1!=1){
                     intnum1=(long)floatsum1;
                      text.setText(""+intnum1);
+                     final_server_result = Long.toString(intnum1);
                 }  
                 else{
                     
                     text.setText(""+floatsum1);
+                    final_server_result = Float.toString(floatsum1);
                 }
                 break;
             }
@@ -1425,10 +1474,12 @@ eqlclick=1;
                 if(dot1!=1){
                     intnum1=(long)floatsum1;
                      text.setText(""+intnum1);
+                     final_server_result = Long.toString(intnum1);
                 }  
                 else{
                     
                     text.setText(""+floatsum1);
+                    final_server_result = Float.toString(floatsum1);
                 }
                 break;
             }
@@ -1444,14 +1495,19 @@ eqlclick=1;
                     if(floatsum1%1>0)
                     {
                         text.setText(""+floatsum1);
+                        final_server_result = Float.toString(floatsum1);
                     }  
                     else{
                             intnum1=(long)floatsum1;
-                             text.setText(""+intnum1);  
+                             text.setText(""+intnum1);
+                             final_server_result = Long.toString(intnum1);
                     }
                  }
                  else
+                 {
                     text.setText("invalid");
+                    server_text = "Invalid calculation";\
+                 }
                  
                   break;
             }
@@ -1469,13 +1525,16 @@ eqlclick=1;
                         intnum2=(long)floatsum2;     
                         intnum1=intnum1%intnum2;
                         text.setText(""+intnum1);
+                        final_server_result = Long.toString(intnum1);
                       }
                      else{ 
                            text.setText("invalid");
+                           server_text = "Invalid calculation";
                         }
                 }
                  else{ 
                         text.setText("invalid");
+                        server_text = "Invalid calculation";
                       }
                 
                 break;
