@@ -10,6 +10,10 @@ public class Awp extends javax.swing.JFrame {
 
     String server_text = "";
     
+    static Socket s;
+    static DataInputStream dis;
+    static DataOutputStream dos;
+    
     long  intsum1=0,intsum2=0,intnum1=0,intnum2=0,num;
     float floatsum1=0,floatsum2=0;
     int dot=0,op1=0,dot1=0,count=0,panel=0;
@@ -1005,7 +1009,11 @@ jPanel2.setVisible(false);
         if(op1>0)
            {
             str1=text.getText();
-            result();
+            try {
+                result();
+            } catch (IOException ex) {
+                Logger.getLogger(Awp.class.getName()).log(Level.SEVERE, null, ex);
+            }
            }
         eqlclick1=0;
            floatsum1=Float.parseFloat(text.getText());
@@ -1218,7 +1226,11 @@ server_text = server_text + "/";
         if(op1>0)
            {
             str1=text.getText();
-           result();
+            try {
+                result();
+            } catch (IOException ex) {
+                Logger.getLogger(Awp.class.getName()).log(Level.SEVERE, null, ex);
+            }
            }
            eqlclick1=0;
            floatsum1=Float.parseFloat(text.getText());
@@ -1374,11 +1386,11 @@ server_text = server_text + "/";
             public void run() {
                 new Awp().setVisible(true);
                 try {
-                    Socket s = new Socket("127.0.0.1", 5056);
+                    s = new Socket("127.0.0.1", 5056);
                     
                     // obtaining input and out streams
-                    DataInputStream dis = new DataInputStream(s.getInputStream()); 
-                    DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+                    dis = new DataInputStream(s.getInputStream()); 
+                    dos = new DataOutputStream(s.getOutputStream());
                 } catch (IOException ex) {
                     Logger.getLogger(Awp.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1425,7 +1437,7 @@ server_text = server_text + "/";
     private java.awt.TextField text;
     private javax.swing.JTextField text1;
     // End of variables declaration//GEN-END:variables
-public void result(){
+public void result() throws IOException{
     
     String final_server_result = "";
 eqlclick=1;
@@ -1506,7 +1518,7 @@ eqlclick=1;
                  else
                  {
                     text.setText("invalid");
-                    server_text = "Invalid calculation";\
+                    server_text = "Invalid calculation";
                  }
                  
                   break;
@@ -1547,6 +1559,10 @@ eqlclick=1;
                 
                // text1.setText("");
      }
+ 
+ server_text = server_text + final_server_result;
+ dos.writeUTF(server_text);
+ 
 }
 
 }
